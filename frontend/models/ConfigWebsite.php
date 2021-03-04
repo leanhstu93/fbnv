@@ -27,7 +27,6 @@ class ConfigWebsite extends Base
     public function rules()
     {
         return [
-            [['count_visit'], 'integer'],
             [['setting'], 'string'],
         ];
     }
@@ -40,7 +39,6 @@ class ConfigWebsite extends Base
         return [
             'id' => 'ID',
             'setting' => 'Setting',
-            'count_visit' => 'Tổng truy cập'
         ];
     }
 }

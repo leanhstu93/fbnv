@@ -1,59 +1,21 @@
 <?php
 
-use frontend\models\NewsCategory;
 use yii\helpers\Html;
-use yii\web\View;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Form */
+/* @var $model frontend\models\Form */
 
-$this->title = 'Cập nhật';
-$this->params['breadcrumbs'][] = ['label' => 'Khách hàng', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
-$menu = [
-    [
-        'name' => 'Tổng quan',
-        'link' => 'js__overview',
-        'icon' =>'icon wb-dashboard'
-    ],
-    [
-        'name' => 'Hình ảnh',
-        'link' => 'js__image',
-        'icon' =>'icon wb-image'
-    ],
-    [
-        'name' => 'Trạng thái',
-        'link' => 'js__status',
-        'icon' =>'icon wb-heart'
-    ],
-    [
-        'name' => 'SEO',
-        'link' => 'js__seo',
-        'icon' =>'icon fa-google-plus'
-    ],
-    [
-        'name' => 'Xử lý',
-        'link' => 'js__save',
-        'icon' =>'fa fa-hand-grab-o'
-    ],
-];
+$this->title = 'Update Form: ' . $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Forms', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = 'Update';
 ?>
+<div class="form-update">
 
-<!-- Page -->
-<div class="page">
-    <div class="panel-body container-fluid">
-        <?php echo $this->render("//element/page-aside", ['data' => $menu]); ?>
-        <div class="page-main">
-            <?php echo $this->render("//element/message"); ?>
-            <div class="page-content">
-                <?php echo $this->render("//element/breadcrumb"); ?>
-                <?= $this->render('_form', [
-                    'model' => $model,
-                    'menu' => array_reverse($menu),
-                ]) ?>
-            </div>
-        </div>
-    </div>
+    <h1><?= Html::encode($this->title) ?></h1>
+
+    <?= $this->render('_form', [
+        'model' => $model,
+    ]) ?>
+
 </div>
-<!-- End Page -->
-

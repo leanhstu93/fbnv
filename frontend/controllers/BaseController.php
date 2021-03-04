@@ -5,7 +5,6 @@ use frontend\models\ConfigPage;
 use frontend\models\Custom;
 use frontend\models\GalleryImage;
 use frontend\models\Router;
-use frontend\models\Sessions;
 use frontend\models\SinglePage;
 use Yii;
 use yii\helpers\Url;
@@ -173,18 +172,10 @@ class BaseController extends Controller
         return $res;
     }
 
-
     public function init()
     {
-        $session = Yii::$app->session;
-        $session->open();
-//        if (empty($session->id)){
-//
-//            debug($session->id);
-//        }
         parent::init();
 
-        Sessions::analyticsVisit();
         #xu ly ngon ngu
         $session = Yii::$app->session;
         $code_lang = $session->get('language');

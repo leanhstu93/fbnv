@@ -1,15 +1,9 @@
-<?php
-
-use frontend\models\Province;
-use kartik\select2\Select2;
-
-?>
 <form action="/admin/form/create" method="post"
-      class="wpcf7-form css__form-tu-van">
-    <input type="hidden" name="-three">
+      class="wpcf7-form">
+    <input type="hidden" name="_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
+    <div class="contact-form style-three">
         <div class="row clearfix">
             <div class="col-md-12 column">
-                <d_csrf" value="<?=Yii::$app->request->getCsrfToken()?>" />
                 <div class="form-group">
                     <span class="fas fa-user"></span>
                     <input type="text"
@@ -21,28 +15,18 @@ use kartik\select2\Select2;
                 </div>
             </div>
             <div class="col-md-12 column">
-                <div class="form-group">
-                    <?php
-                    $proviceAll = Province::find()->asArray()->all();
-
-                    $listCate = array_combine(array_column($proviceAll,'id'),array_column($proviceAll,'_name'));
-
-                    echo Select2::widget([
-                        'name' => 'Form[province_id]',
-                        'value' => '',
-                        'data' => $listCate,
-                        'options' => ['required' => true, 'style'=> ' display:block;color:red','class' => 'form-control','multiple' => false, 'placeholder' => 'Chọn tỉnh thành  ...']
-                    ]);
-                    ?>
-                </div>
+                <div class="form-group"><span
+                        class="fas fa-envelope"></span><input
+                        type="email" name="Form[email]"
+                        class="form-control required email" value=""
+                        placeholder="Email" required></div>
             </div>
             <div class="col-md-12 column">
                 <div class="form-group"><span
                         class="fas fa-phone"></span>
                     <input  type="text" name="Form[phone]"
                             class="form-control" value=""
-                            placeholder="Điện thoại" required>
-                </div>
+                            placeholder="Điện thoại" required></div>
             </div>
             <div class="col-md-12 column">
                 <div class="form-group"><span class="fas fa-comment"></span><textarea

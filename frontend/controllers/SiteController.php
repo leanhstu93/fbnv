@@ -2,8 +2,6 @@
 namespace frontend\controllers;
 
 use frontend\models\Bill;
-use frontend\models\Result;
-use frontend\models\Form;
 use frontend\models\BillDetail;
 use frontend\models\GalleryImage;
 use frontend\models\News;
@@ -11,7 +9,6 @@ use frontend\models\NewsCategory;
 use frontend\models\Product;
 use frontend\models\ProductCategory;
 use frontend\models\ProductImage;
-use frontend\models\Quizz;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\SinglePage;
 use frontend\models\Video;
@@ -32,7 +29,6 @@ use frontend\models\ConfigPage;
 use frontend\models\RlProductCategory;
 use yii\data\Pagination;
 use yii\helpers\Json;
-use yii\web\Response;
 
 /**
  * Site controller
@@ -46,41 +42,12 @@ class SiteController extends BaseController
 
     public function actionRewriteUrl($alias)
     {
-
-
-        $session = Yii::$app->session;
-        # tam
-        if ($alias == 'symptom') {
-            $menuSymptom = 'active';
-            $res['file'] = 'symptom';
-            $res['data'] = [];
-         #end
-        }else if($alias == 'diagnose') {
-            $menuDiagnose = 'active';
-            $res['file'] = 'diagnose';
-            $res['data'] = [];
-        } else if($alias == 'cpap') {
-            $menuCpap = 'active';
-            $res['file'] = 'cpap';
-            $res['data'] = [];
-        } else if($alias == 'dieu-tri') {
-            $menuDieuTri = 'active';
-            $res['file'] = 'dieu-tri';
-            $res['data'] = [];
-        } else if($alias == 'dinh-nghia') {
-            $menuDinhNghia = 'active';
-            $res['file'] = 'dinh-nghia';
-            $res['data'] = [];
-        } else if($alias == 'hau-qua') {
-            $menuHauQua = 'active';
-            $res['file'] = 'hau-qua';
-            $res['data'] = [];
-        } else if($alias == 'cau-hoi') {
-            $menuCauHoi = 'active';
-            $res['file'] = 'cau-hoi';
-            $res['data'] = [];
-        } else if($alias == 'quizz') {
-            $type = 'quizz';
+        if($alias == 'lien-he') {
+            $type = 'contact';
+        } else if($alias == 'gioi-thieu') {
+            $type = 'about';
+        } else if($alias == 'dich-vu') {
+            $type = 'dich-vu';
         } else if($alias == 'cart') {
             $type = 'cart';
         } else if($alias == 'checkout') {
@@ -170,18 +137,10 @@ class SiteController extends BaseController
                     ];
                     $res['file'] = 'noti-save-bill-success';
                     break;
-                case 'quizz' :
-
-                    if (!$session->has('form_id')) {
-                        $this->redirect(Yii::$app->homeUrl);
-                    }
-                    $this->layout = 'main1';
-                    $res['file'] = 'quizz';
-                    $res['data'] = [];
             }
-        }
 
-        return $this->render($res['file'],$res['data']);
+            return $this->render($res['file'],$res['data']);
+        }
     }
 
     public function actionSaveBillNoti()
@@ -953,79 +912,5 @@ class SiteController extends BaseController
             }
             echo Json::encode($results);
         }
-    }
-
-    public function actionGetQuizzJson()
-    {
-        Yii::$app->response->format = Response::FORMAT_JSON;
-        $data = [];
-        foreach (Quizz::find()->where(['active' => 1])->all() as $item) {
-            $data[] = [
-              'name' => $item->name,
-               'type' => "quizz-".$item->id,
-                'value' => ''
-            ];
-        }
-        echo Json::encode([
-            'result' => true,
-            'message' => 'success',
-            'data' => $data
-        ]);
-        exit;
-    }
-
-    private function showTextResult($popint)
-    {
-        if ($popint <= 2) {
-            return "Thấp";
-        } else if($popint <= 4) {
-            return "Trung Bình";
-        } else {
-            return "Cao";
-        }
-    }
-
-    /**
-     * 0 -> 2 co nguy co thap
-     * 3 -> 4 tb
-     * 5 -> 8 cao
-     */
-    public function actionSaveResult()
-    {
-        $response = [
-            'result' => false,
-            'data' => []
-        ];
-        $formData = json_decode($_POST['data'],true);
-        if (!empty($formData)) {
-            $dataSave = [];
-            $point = 0;
-            foreach ($formData as $item) {
-                if(strpos($item['type'], 'quizz') !== false) {
-                    $dataSave[] = $item;
-                    $point += (int)$item['value'];
-                }
-            }
-        }
-        if (!empty($dataSave)) {
-            $session = Yii::$app->session;
-            $form_id = $session->get('form_id');
-            $form = Form::find()->where(['id' => $form_id])->one();
-            $model = new Result();
-            $model->data = json_encode($dataSave,JSON_UNESCAPED_UNICODE);
-            $model->name = $form->name;
-            $model->phone = $form->phone;
-            $model->email = $form->phone;
-            $model->point = $point;
-            $model->status = 1;
-            $model->save();
-            $textResult = $this->showTextResult($point);
-            $response = [
-                'result' => true,
-                'data' => $textResult
-            ];
-        }
-        echo Json::encode($response);
-        exit;
     }
 }

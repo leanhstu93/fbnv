@@ -102,7 +102,6 @@ class SinglePageController extends BaseController
     {
         # language
         $listLanguage = Yii::$app->params['listLanguage'];
-        $dataLang = [];
         foreach ($listLanguage as $key => $value) {
             if ($value['default']) continue;
             $dataLang[$key] = DataLang::find()->where(['type' => DataLang::TYPE_SINGLE_PAGE,'id_object' => $id, 'code_lang' => $key])->one();

@@ -38,7 +38,6 @@ class Company extends Base
     public function rules()
     {
         return [
-            [['count_visit'], 'integer'],
             [['name', 'address', 'favicon', 'logo', 'email', 'fax', 'tel', 'phone', 'facebook', 'twitter', 'google', 'youtube','meta_title','meta_keyword', 'meta_desc'], 'string', 'max' => 255],
         ];
     }

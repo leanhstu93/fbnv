@@ -16,16 +16,15 @@
     "require": {
         "php": ">=5.4.0",
         "yiisoft/yii2": "~2.0.14",
-        "yiisoft/yii2-bootstrap": "~2.0.0",
+        "yiisoft/yii2-bootstrap4": "~2.0.6",
         "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
         "kartik-v/yii2-grid": "@dev",
         "kartik-v/yii2-krajee-base": "@dev",
         "kartik-v/yii2-widget-colorinput": "*",
         "2amigos/yii2-ckeditor-widget" : "~2.1",
         "kartik-v/yii2-editable": "@dev",
-         "devanych/yii2-cart": "*",
         "keygenqt/yii2-autocomplete-ajax": "1.0.3",
-        "kartik-v/yii2-widget-select2": "^2.1@dev"
+         "devanych/yii2-cart": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

@@ -96,6 +96,8 @@ class AppAsset extends AssetBundle
         '/ckfinder/ckfinder.js',
         'js/base.js',
         'js/main.js',
+        'https://unpkg.com/react@17/umd/react.development.js',
+        'https://unpkg.com/react-dom@17/umd/react-dom.development.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',

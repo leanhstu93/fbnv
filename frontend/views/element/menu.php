@@ -1,60 +1,44 @@
-<?php
-use Yii\helpers\Url;
-
-$menuSymptom = trim(Url::current(),'/') == 'symptom' ? 'active' : '';
-$menuDiagnose = trim(Url::current(),'/') == 'diagnose' ? 'active' : '';
-$menuCpap = trim(Url::current(),'/') == 'cpap' ? 'active' : '';
-$menuDieuTri = trim(Url::current(),'/') == 'dieu-tri' ? 'active' : '';
-$menuDinhNghia = trim(Url::current(),'/') == 'dinh-nghia' ? 'active' : '';
-$menuHauQua = trim(Url::current(),'/') == 'hau-qua' ? 'active' : '';
-$menuCauHoi = trim(Url::current(),'/') == 'cau-hoi' ? 'active' : '';
-
-
-?>
 <div class="wrapper-menu">
     <div class="w1000">
-        <div class="logo-menu">
-            <a href="/">
-                <img width="120px" src="<?=  $this->params['company']->logo ?>">
-            </a>
-        </div>
         <div id='cssmenu' class="w100">
             <ul>
-                <li>
-                    <a href="/dinh-nghia" class="<?php echo $menuDinhNghia ?>">
-                    Định nghĩa - nguyên nhân
+                <li><a class="class="acvmenu bt_home active"" href='/'>
+                    <img src="images/homepage.png">
                     </a>
                 </li>
-                <li>
-                    <a href="/symptom" class="<?php echo $menuSymptom ?>">
-                        Triệu Chứng
-                    </a>
-                </li>
-                <li>
-                    <a href="/hau-qua" class="<?php echo $menuHauQua ?>">
-                        Hậu Quả
-                    </a>
-                </li>
-                <li>
-                    <a href="/diagnose" class="<?php echo $menuDiagnose ?>">
-                        Chẩn Đoán
-                    </a>
-                </li>
-                <li>
-                    <a href="/dieu-tri" class="<?php echo $menuDieuTri ?>">
-                        Điều Trị
-                    </a>
-                </li>
-                <li>
-                    <a href="/cpap" class="<?php echo $menuCpap ?>">
-                        Cpap
-                    </a>
-                </li>
-                <li>
-                    <a href="/cau-hoi" class="<?php echo $menuCauHoi ?>">
-                        Câu hỏi
-                    </a>
-                </li>
+                <?php
+                foreach ($this->params['menu'] as $item) {
+                    $class_sub = !empty($item['sub_menu']) ? 'dropdown' : '';
+                    ?>
+                        <?php
+                        if (!empty($item['sub_menu'])) { ?>
+
+                                <?php foreach ($item['sub_menu'] as $item1) {
+                                    $class_sub = !empty($item1['sub_menu']) ? 'dropdown' : '';
+                                    ?>
+                                    <li class="current <?= $class_sub ?>">
+                                        <a href="<?= $item1['link'] ?>"><?= $item1['name'] ?>
+                                            <?php if (!empty($item1['sub_menu'])) { ?>
+                                                <i class="fas fa-angle-right"></i>
+                                            <?php } ?>
+                                        </a>
+                                        <?php
+                                        if (!empty($item1['sub_menu'])) {
+                                            ?>
+                                            <ul>
+                                                <?php foreach ($item1['sub_menu'] as $item2) {
+                                                    $class_sub = !empty($item2['sub_menu']) ? 'dropdown' : '';
+                                                    ?>
+                                                    <li  class="current <?= $class_sub ?>">
+                                                        <a href="<?= $item2['link'] ?>"><?= $item2['name'] ?></a>
+                                                    </li>
+                                                <?php } ?>
+                                            </ul>
+                                        <?php } ?>
+                                    </li>
+                                <?php } ?>
+                        <?php } ?>
+                <?php } ?>
             </ul>
         </div>
     </div>

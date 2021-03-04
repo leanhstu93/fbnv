@@ -3,19 +3,25 @@
 use frontend\models\Banner;
 use yii\bootstrap\Modal;
 ?>
-<header class="w100">
-    <div class="w1000">
-        <div class="wrapper-col">
-            <div class="col col-left">
-                <a href="/">
-                <img src="/images/Logo-4.png"/>
-                </a>
-            </div>
-            <div class="col col-right">
-                <img src="/images/Logo-cpapvn-v7-01.png"/>
+<div class="header clearfix">
+    <div class="header_logo">
+        <div class="wp1040 relative">
+            <div class="logo">
+                <h1><a href="/" title="Kênh thông tin kinh tế - tài chính Việt Nam">
+                        <img src="<?=  $this->params['company']->logo ?>"/>
+                    </a></h1>
             </div>
         </div>
     </div>
-</header>
-<?php echo $this->render("//element/menu"); ?>
+    <div class="w1000">
+        <div class="header-banner">
+            <?php
+            $banner = Banner::getDataByCustomSetting('banner_header');
+            ?>
+            <img class="image-responsive" src="<?php echo $banner->images->image ?>">
+        </div>
+    </div>
+    <?php echo $this->render("//element/menu"); ?>
+</div>
+
 
