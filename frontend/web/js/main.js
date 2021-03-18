@@ -19,6 +19,7 @@ Main.fn = Main.prototype = {
 
     init: function () {
          this.initSlider();
+         this.initSlideMember();
         // this.fixScrollMenu();
         // this.initScrollReadMulti();
         // this.handleScrollToTop();

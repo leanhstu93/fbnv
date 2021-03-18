@@ -744,3 +744,9 @@ section.service-home .wrapper-items .item .desc:after{
 .title-section-desc{
 	margin-top: 20px;
 }
+.member__home .wrapper-content-slide .avatar{
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+	overflow: hidden;
+}

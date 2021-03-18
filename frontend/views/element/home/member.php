@@ -5,7 +5,7 @@ use frontend\models\ConfigPage;
 use frontend\models\TemplateCategory;
 use frontend\models\Template;
 ?>
-<section class="ceo__home w100 ">
+<section class="member__home w100 ">
     <div class="w1000">
         <div class="wrapper-title">
             THÀNH VIÊN THINK DESIGNER
