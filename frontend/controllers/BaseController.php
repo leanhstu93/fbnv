@@ -22,12 +22,9 @@ use frontend\models\NewsCategory;
 class BaseController extends Controller
 {
 
-    public function buildMenu ()
+    private function doBuildMenu($data,&$res)
     {
-        $menu = Menu::find()->where(['id' => 1])->one();
-        $res = [];
-
-        foreach (json_decode($menu->data,true) as $value) {
+        foreach ($data as $value) {
             extract($value);
             /**
              * @var $id
@@ -38,7 +35,7 @@ class BaseController extends Controller
              */
 
             if (strpos($module,'single-page')) {
-               $module = 'single-page';
+                $module = 'single-page';
             }
 
             switch ($module) {
@@ -87,7 +84,7 @@ class BaseController extends Controller
                         'link' => $myProduct->getUrlAll(),
                         'module' => $module,
                         'sub_menu' => $submenu
-                        ];
+                    ];
                     break;
                 case 'home':
                     $res[] = [
@@ -157,7 +154,7 @@ class BaseController extends Controller
                         'link' =>  Url::base(true) . '/lien-he',
                         'module' => $module,
                     ];
-                break;
+                    break;
                 case 'gallery-image':
                     $myGallery = new GalleryImage();
                     $config =  ConfigPage::find()->where(['type' => ConfigPage::TYPE_GALLERY_IMAGE])->one()->setTranslate();
@@ -168,7 +165,21 @@ class BaseController extends Controller
                     ];
                     break;
             }
+
+            if (!empty($value['children'])) {
+                $this->doBuildMenu($value['children'],$res[array_key_last($res)]['sub_menu']);
+            }
         }
+    }
+
+    public function buildMenu ()
+    {
+        $menu = Menu::find()->where(['id' => 1])->one();
+        $res = [];
+        $data = json_decode($menu->data,true);
+
+        $this->doBuildMenu($data,$res);
+
         return $res;
     }
 

@@ -46,6 +46,7 @@ class ProductController extends BaseController
     {
         $model = new Product();
         $formData = Yii::$app->request->post();
+        $dataLang = [];
         # language
         $listLanguage = Yii::$app->params['listLanguage'];
         foreach ($listLanguage as $key => $value) {
@@ -102,6 +103,7 @@ class ProductController extends BaseController
      */
     public function actionUpdate($id)
     {
+        $dataLang = [];
         # language
         $listLanguage = Yii::$app->params['listLanguage'];
         foreach ($listLanguage as $key => $value) {
@@ -194,11 +196,12 @@ class ProductController extends BaseController
 
     public function actionConfig()
     {
-        if ($model =  ConfigPage::find()->where(['id' => ConfigPage::TYPE_PRODUCT])->one() === null) {
+        $dataLang = [];
+        if ($model =  ConfigPage::find()->where(['type' => ConfigPage::TYPE_PRODUCT])->one() === null) {
             $model = new ConfigPage();
             $model->type = ConfigPage::TYPE_PRODUCT;
         } else {
-            $model =  ConfigPage::find()->where(['id' => ConfigPage::TYPE_PRODUCT])->one();
+            $model =  ConfigPage::find()->where(['type' => ConfigPage::TYPE_PRODUCT])->one();
         }
 
         # language

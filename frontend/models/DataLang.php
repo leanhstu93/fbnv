@@ -33,6 +33,12 @@ class DataLang extends Base
     const TYPE_BANNER= 19;
     const TYPE_PAGE_VIDEO= 21;
     const TYPE_VIDEO= 23;
+    const TYPE_TEMPLATE_CATEGORY = 25;
+    const TYPE_TEMPLATE = 27;
+    const TYPE_SERVICE = 29;
+    const TYPE_SERVICE_CATEGORY = 31;
+    const TYPE_PAGE_SERVICE = 33;
+    const TYPE_PAGE_TEMPLATE = 35;
 
     /**
      * {@inheritdoc}

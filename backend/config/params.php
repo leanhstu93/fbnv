@@ -69,6 +69,45 @@ return [
                 ],
             ]
         ],
+        'mn_manager_template' => [
+
+            'name' => 'Quản lý template',
+            'link' => 'javascript:void(0)',
+            'icon' => '<i class="site-menu-icon wb-layout" aria-hidden="true"></i>',
+            'submenu' => [
+                'submenu_1' => [
+                    'name' => 'Thiết lập template',
+                    'link' => 'template/config'
+                ],
+                'submenu_2' => [
+                    'name' => 'Danh sách',
+                    'link' => 'template/index'
+                ],
+                'submenu_3' => [
+                    'name' => 'Danh sách danh mục',
+                    'link' => 'template-category/index'
+                ],
+            ]
+        ],
+        'mn_manager_service' => [
+            'name' => 'Quản lý dịch vụ',
+            'link' => 'javascript:void(0)',
+            'icon' => '<i class="site-menu-icon wb-layout" aria-hidden="true"></i>',
+            'submenu' => [
+                'submenu_1' => [
+                    'name' => 'Thiết lập dịch vụ',
+                    'link' => 'service/config'
+                ],
+                'submenu_1' => [
+                    'name' => 'Danh sách dịch vụ',
+                    'link' => 'service/index'
+                ],
+                'submenu_2' => [
+                    'name' => 'Danh sách danh mục',
+                    'link' => 'service-category/index'
+                ],
+            ]
+        ],
         'mn_manager_order' => [
             'name' => 'Quản lý đơn hàng',
             'link' => 'javascript:void(0)',
@@ -147,19 +186,37 @@ return [
     # tuy chinh giao dien
     'settingTemplate' => [
         'CUSTOM_IMAGE' => [
-            'banner_header' =>[
-                'name' => 'Banner header',
+            'banner_home' =>[
+                'name' => 'Banner home',
                 'data' => 1,
                 'type' => 'one',
                 'note' => '',
                 'limit' => 1
             ],
-            'one_banner_home_bottom' =>[
-                'name' => 'Banner cuối trang chủ',
+            'banner_review' =>[
+                'name' => 'Banner đánh giá',
                 'data' => 2,
-                'type' => 'one',
                 'note' => '',
+                'limit' => 4
+            ],
+            'banner_brand' =>[
+                'name' => 'Banner đối tác',
+                'data' => 3,
+                'note' => '',
+                'limit' => 5
+            ],
+            'banner_ceo' =>[
+                'name' => 'Banner CEO',
+                'data' => 4,
+                'note' => '',
+                'type' => 'one',
                 'limit' => 1
+            ],
+            'banner_brand' =>[
+                'name' => 'Banner thành viên',
+                'data' => 5,
+                'note' => '',
+                'limit' => 5
             ],
             'banner_adv_sidebar_1' => [
                 'name' => 'Banner sidebar 1',
@@ -185,8 +242,8 @@ return [
 
         ],
         'CUSTOM_SINGLE_PAGE' => [
-            'one_footer' =>[
-                'name' => 'Trang đơn footer',
+            'one_about_home' =>[
+                'name' => 'Trang đơn dưới banner home',
                 'data' => 1,
                 'note' => '',
                 'limit' => 1
@@ -244,7 +301,7 @@ return [
         ],
     ],
 
-    #menu
+    #menu website
     'menuDefault' => [
         [
             'name' => 'Trang chủ',
@@ -281,6 +338,13 @@ return [
             'link' => 'gallery-image/config',
             'type' => ConfigPage::TYPE_GALLERY_IMAGE
         ],
+        [
+            'name' => 'Kho giao diện',
+            'id' => 'mn_template',
+            'module' => 'template',
+            'link' => 'template/config',
+            'type' => ConfigPage::TYPE_TEMPLATE
+        ],
     ],
 
     # setting language
@@ -289,7 +353,9 @@ return [
         'same_category' => 'Cùng chuyên mục',
         'read_a_lot' => 'Đọc nhiều',
         'video_relates' => 'Video liên quan',
-        'mutex' => 'mutex'
+        'mutex' => 'mutex',
+        'contact' => 'Liên hệ',
+        'see_more' => 'Xem thêm'
     ],
     'listLanguage' => [
         'vi' => [

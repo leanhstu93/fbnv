@@ -21,7 +21,7 @@ use yii\data\ActiveDataProvider;
  */
 class SinglePage extends Base
 {
-
+    const TYPE_ROUTER = Router::TYPE_SINGLE_PAGE; # lấy type router dùng seo_name
     const STATUS_INACTIVE = 3;
     const STATUS_ACTIVE = 1;
     const OPTION_NEW = 1;
@@ -128,6 +128,9 @@ class SinglePage extends Base
     {
         $custom = Custom::getSettingCustomTemplate();
 
+        if (empty($custom[Custom::KEY_SINGLE_PAGE][$key])){
+            return false;
+        }
         $custom_image =  (object)$custom[Custom::KEY_SINGLE_PAGE][$key];
 
         if(!empty($custom_image->data)) {

@@ -9,7 +9,7 @@ $menubarAdmin = \Yii::$app->params['menubarAdmin'];
                    <?php foreach($menubarAdmin as $key => $item) { ?>
                         <li class="site-menu-item has-sub">
                             <a href="<?php
-                            echo empty($item['link']) ? 'javascript:void(0)' :
+                            echo (empty($item['link']) || $item['link'] == 'javascript:void(0)') ? 'javascript:void(0)' :
                                  Yii::$app->getUrlManager()->getBaseUrl(). '/' . $item['link'];
                             ?>">
                                 <?php echo $item['icon'] ?>

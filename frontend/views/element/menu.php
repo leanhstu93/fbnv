@@ -2,17 +2,14 @@
     <div class="w1000">
         <div id='cssmenu' class="w100">
             <ul>
-                <li><a class="class="acvmenu bt_home active"" href='/'>
-                    <img src="images/homepage.png">
-                    </a>
-                </li>
                 <?php
                 foreach ($this->params['menu'] as $item) {
                     $class_sub = !empty($item['sub_menu']) ? 'dropdown' : '';
                     ?>
+                    <li><a href="<?= $item['link'] ?>"><?php echo $item['name'] ?></a>
                         <?php
                         if (!empty($item['sub_menu'])) { ?>
-
+                            <ul>
                                 <?php foreach ($item['sub_menu'] as $item1) {
                                     $class_sub = !empty($item1['sub_menu']) ? 'dropdown' : '';
                                     ?>
@@ -37,7 +34,9 @@
                                         <?php } ?>
                                     </li>
                                 <?php } ?>
+                            </ul>
                         <?php } ?>
+                    </li>
                 <?php } ?>
             </ul>
         </div>

@@ -106,6 +106,7 @@ class MenuController extends BaseController
         $model->data = json_decode($model->data,true);
         $model->data = $this->buildMenu($model->data);
         $model->data = json_encode($model->data);
+
         return $this->render('update', [
             'model' => $model,
         ]);

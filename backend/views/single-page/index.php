@@ -74,7 +74,7 @@ $scrollingTop = 10;
                 ?>
                 <?= GridView::widget([
                     'dataProvider' => $dataProvider,
-                    'columns' =>$gridColumns,
+                       'columns' =>$gridColumns,
                     'showPageSummary' => false,
                     'striped' => false,
                     'hover' => true,

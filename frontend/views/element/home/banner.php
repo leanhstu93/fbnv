@@ -4,20 +4,9 @@ use frontend\models\Banner;
 
 ?>
 <section class="main-slider w100">
-    <div class="js__slider-news-home w100">
-        banner_slide_home
-        <?php
+    <?php
+    $banner = Banner::getDataByCustomSetting('banner_home');
 
-        $banner = Banner::getDataByCustomSetting('banner_slide_home');
-        if (!empty($banner->images)) {
-        foreach ($banner->images as $item) {
-
-            ?>
-            <div class="item w100">
-                <img src="/<?php echo $item->image ?>" class="w100">
-            </div>
-            <?php
-            }
-        } ?>
-    </div>
+    ?>
+    <img src="<?php echo $banner->images->image ?>" class="w100">
 </section>

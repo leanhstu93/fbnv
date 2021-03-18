@@ -29,6 +29,7 @@ class ProductCategory extends Base
 {
     const OPTION_NEW = 1;
     const OPTION_HOT = 3;
+    const TYPE_ROUTER = Router::TYPE_PRODUCT_CATEGORY; # lấy type router dùng seo_name
 
     /**
      * {@inheritdoc}

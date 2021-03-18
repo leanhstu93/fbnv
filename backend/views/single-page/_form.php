@@ -72,9 +72,15 @@ use frontend\models\Product;
         </div>
         <?= $this->render('//element/panel-heading',array_pop($menu)) ?>
         <div class="panel-body container-fluid">
-            <?php
-
-            ?>
+            <?= $form->field($model, 'image',['template' => '<label>Hình ảnh</label><div class="input-group input-group-file js__select-image">{input}<span class="input-group-btn">
+                      <span class="btn btn-success btn-file">
+                        <i class="icon wb-upload" aria-hidden="true"></i>
+                       
+                      </span>
+                    </span></div>'], [
+                'buttonLabel' => 'Chọn hình',
+                'model' => $model,
+            ])->textInput(['class' => 'js__image-value form-control']) ?>
         </div>
         <?= $this->render('//element/panel-heading',array_pop($menu)) ?>
         <div class="panel-body container-fluid">

@@ -62,7 +62,7 @@ class AppAsset extends AssetBundle
         'libs/Component/Component.min.js',
         'libs/sortable/Sortable.min.js',
         'libs/sortable/jquery-sortable.js',
-//        'libs/nestable/jquery.nestable.min.js',
+        'libs/nestable/jquery.nestable.min.js',
         'libs/global/Plugin.min.js',
         'libs/global/Base.min.js',
         'libs/global/Config.min.js',

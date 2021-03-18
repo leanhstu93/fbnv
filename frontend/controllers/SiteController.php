@@ -307,7 +307,7 @@ class SiteController extends BaseController
 
             # set meta
             $configPage = new ConfigPage();
-            $modelConfigPage = $configPage->getPageConfig(ConfigPage::TYPE_NEWS);
+            $modelConfigPage = ConfigPage::getPageConfig(ConfigPage::TYPE_NEWS);
             $modelConfigPage->setTranslate();
             $this->view->registerMetaTag([
                 'name' => 'keywords',
@@ -824,8 +824,7 @@ class SiteController extends BaseController
 
     public function getGalleryImage()
     {
-        $configPage = new ConfigPage();
-        $modelConfigPage = $configPage->getPageConfig(ConfigPage::TYPE_GALLERY_IMAGE);
+        $modelConfigPage = ConfigPage::getPageConfig(ConfigPage::TYPE_GALLERY_IMAGE);
         $data = GalleryImage::find()->where(['active' => 1]);
         $countQuery = clone $data;
         $bread[] = [

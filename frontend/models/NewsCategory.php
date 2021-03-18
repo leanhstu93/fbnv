@@ -32,6 +32,7 @@ class NewsCategory extends Base
     const OPTION_NEW = 3;
     const OPTION_HOT = 5;
     const OPTION_SPECIAL = 7;
+    const TYPE_ROUTER = Router::TYPE_NEWS_CATEGORY; # lấy type router dùng seo_name
     /**
      * {@inheritdoc}
      */
@@ -139,16 +140,10 @@ class NewsCategory extends Base
         ];
     }
 
-    public function getSeoName()
-    {
-        $model = Router::find()->where(['id_object' => $this->id,'type' => Router::TYPE_NEWS_CATEGORY])->one();
-        return $model->seo_name;
-    }
-
-    public function getUrl()
-    {
-        return Yii::$app->homeUrl .$this->getSeoName();
-    }
+//    public function getUrl()
+//    {
+//        return Yii::$app->homeUrl .$this->getSeoName();
+//    }
 
     static function getIdsChild($data,&$res)
     {

@@ -69,13 +69,7 @@ use yii\widgets\ActiveForm;
         <?php } ?>
     </div>
 
-    <div class="w100 block-sidebar block-exchange-rate">
-        <iframe class="100" src="https://adi.admicro.vn/adt/cpc/tvcads/files/html/tu_050820/tygia_box1.html?&url=undefined"></iframe>
-    </div>
 
-    <div class="w100 block-sidebar block-exchange-rate-price">
-        <iframe class="w100" src="https://adi.admicro.vn/adt/banners/nam2015/2033/boxtaitro/tygia_box2.html"></iframe>
-    </div>
     <div id="rightstickyanchor"></div>
     <div class="w100 block-sidebar wrapper-advertisement" id="rightsticky">
         <?php

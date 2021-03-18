@@ -17,7 +17,7 @@ use Yii;
  */
 class GalleryImage  extends Base
 {
-
+    const TYPE_ROUTER = Router::TYPE_GALLERY_IMAGE; # lấy type router dùng seo_name
     public $field_lang = [
         'name' => 'name',
         'desc' => 'desc',

@@ -85,6 +85,17 @@ class Base extends \yii\db\ActiveRecord
         return $seo_name;
     }
 
+    public function getSeoName()
+    {
+        $model = Router::find()->where(['id_object' => $this->id,'type' => static::TYPE_ROUTER])->one();
+        return $model ? $model->seo_name : '';
+    }
+
+    public function getUrl()
+    {
+        return Yii::$app->homeUrl .$this->getSeoName();
+    }
+
     /**
      * @return array
      */
@@ -116,6 +127,26 @@ class Base extends \yii\db\ActiveRecord
     public function getDescriptionCut($count)
     {
         $data = strip_tags($this->desc);
+        $data = trim($data);
+        $data = str_replace("&nbsp;", " ", $data);
+
+        if (strlen($data) <= $count) {
+            return $data;
+        }
+
+        for ($i = $count; $i >= 0; $i--) {
+            if ($data[$i] == ' ') {
+                echo $data[$i];
+                return mb_substr($data, 0,$i). '...';
+            }
+        }
+
+        return '';
+    }
+
+    public function getContentCut($count)
+    {
+        $data = strip_tags($this->content);
         $data = trim($data);
         $data = str_replace("&nbsp;", " ", $data);
 

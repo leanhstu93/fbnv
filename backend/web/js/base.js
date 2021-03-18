@@ -15,6 +15,7 @@ Base.fn = Base.prototype = {
 		selectorSelectSumo: '.js__init-select-sumo',
 		selectorSelectMultiple: '.js__init-select-multiple',
 		selectorSortAble: '.js__init-sort-able',
+		selectorSubmitSaveMenu: '.js-submit-save-menu',
 		classNotEdit : 'Ta_js-not-edit',
 		selectorDataMenu : '.Ta_js-data-menu',
 		classTabLangDefault: 'js-tab-language-',
@@ -174,7 +175,8 @@ Base.fn = Base.prototype = {
 
 	    $(self.config.selectToggleGetAlias).on('change', function () {
 	        if ($(this).prop('checked')) {
-	            self.JS_bodau_tv(self.config.selectTitleValue, self.config.selectAliasValue, 0);
+	        	console.log();
+	            self.JS_bodau_tv($(self.config.selectTitleValue), self.config.selectAliasValue, 0);
 	            $(self.config.selectAliasValue).attr('readonly', 'readonly');
 	        } else {
 	            $(self.config.selectAliasValue).removeAttr('readonly');
@@ -187,6 +189,9 @@ Base.fn = Base.prototype = {
 				self.JS_bodau_tv($(this), $(this).parent().parent().find(self.config.selectAliasValue), 0);
 			}
 	    });
+
+		//
+		$(self.config.selectToggleGetAlias).trigger('change');
 	},
 
 	handleActiveSideBar: function () {
@@ -205,45 +210,55 @@ Base.fn = Base.prototype = {
 
 	initSortAble : function () {
 		var self = this;
+		// var group = $(self.config.selectorSortAble).sortable({
+		// 	group: 'nestable',
+		// 	animation: 150,
+		// 	pullPlaceholder: true,
+        //     placeholderClass: "placeholder",
+		// 	placeholder: '<li class="placeholder" style="height:37px"></li>',
+		//
+        //     // animation on drop
+		// 	onDrop: function  ($item, container, _super) {
+		// 		var data = group.sortable("serialize").get();
+		//
+		// 		var result = JSON.stringify(data[0]);
+		// 		$(self.config.selectorSortAble).addClass(self.config.classNotEdit);
+		// 		$(self.config.selectorDataMenu).val(result);
+		// 		var $clonedItem = $('<li/>').css({height: 0});
+		// 		$item.before($clonedItem);
+		// 		$clonedItem.animate({'height': $item.height()});
+		//
+		// 		$item.animate($clonedItem.position(), function  () {
+		// 			$clonedItem.detach();
+		// 			_super($item, container);
+		// 		});
+		// 	},
+		//
+		// 	// set $item relative to cursor position
+		// 	onDragStart: function ($item, container, _super) {
+		// 		var offset = $item.offset(),
+		// 			pointer = container.rootGroup.pointer;
+		//
+		// 		adjustment = {
+		// 			left: pointer.left - offset.left,
+		// 			top: pointer.top - offset.top
+		// 		};
+		//
+		// 		_super($item, container);
+		// 	},
+		// 	onDrag: function ($item, position) {
+		// 		$item.css({
+		// 			left: position.left - adjustment.left,
+		// 			top: position.top - adjustment.top
+		// 		});
+		// 	}
+		// });
+		$(self.config.selectorSubmitSaveMenu).click(function(e) {
+			let data = $(self.config.selectorSortAble).nestable('serialize');
+			let result = JSON.stringify(data);
+			$(self.config.selectorSortAble).addClass(self.config.classNotEdit);
+			$(self.config.selectorDataMenu).val(result);
 
-		var group = $(self.config.selectorSortAble).sortable({
-			group: 'shared',
-			animation: 150,
-			pullPlaceholder: false,
-			// animation on drop
-			onDrop: function  ($item, container, _super) {
-				var data = group.sortable("serialize").get();
-				var result = JSON.stringify(data[0]);
-				$(self.config.selectorSortAble).addClass(self.config.classNotEdit);
-				$(self.config.selectorDataMenu).val(result);
-				var $clonedItem = $('<li/>').css({height: 0});
-				$item.before($clonedItem);
-				$clonedItem.animate({'height': $item.height()});
-
-				$item.animate($clonedItem.position(), function  () {
-					$clonedItem.detach();
-					_super($item, container);
-				});
-			},
-
-			// set $item relative to cursor position
-			onDragStart: function ($item, container, _super) {
-				var offset = $item.offset(),
-					pointer = container.rootGroup.pointer;
-
-				adjustment = {
-					left: pointer.left - offset.left,
-					top: pointer.top - offset.top
-				};
-
-				_super($item, container);
-			},
-			onDrag: function ($item, position) {
-				$item.css({
-					left: position.left - adjustment.left,
-					top: position.top - adjustment.top
-				});
-			}
 		});
 	},
 

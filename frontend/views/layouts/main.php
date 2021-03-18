@@ -47,8 +47,8 @@ $myUrl .= '://'.$_SERVER['HTTP_HOST'];
 <div class="w1350">
     <!-- Preloader -->
     <div class="preloader"></div>
-    <?php echo $this->render("//element/header"); ?>
-        <?= Alert::widget() ?>
+    <?php  echo $this->render("//element/header"); ?>
+        <?=  Alert::widget() ?>
     <?php echo $this->render("//element/message"); ?>
         <?= $content ?>
     <?php echo $this->render("//element/footer"); ?>

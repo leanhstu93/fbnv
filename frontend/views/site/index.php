@@ -4,6 +4,17 @@ use frontend\models\Banner;
 use frontend\models\News;
 use frontend\models\NewsCategory;
 ?>
+<?php echo $this->render("//element/home/banner"); ?>
+<?php echo $this->render("//element/home/design-website-pro"); ?>
+<?php echo $this->render("//element/home/think-design-solution"); ?>
+<?php echo $this->render("//element/home/think-design-solution-smart"); ?>
+<?php echo $this->render("//element/home/review"); ?>
+<?php echo $this->render("//element/home/service"); ?>
+<?php echo $this->render("//element/home/template"); ?>
+<?php echo $this->render("//element/home/hotline"); ?>
+<?php echo $this->render("//element/home/ceo"); ?>
+<?php echo $this->render("//element/home/member"); ?>
+
 <div class="w1000">
     <div class="content page-home content-page" id="streamItem">
         <div class="page-left">
@@ -490,14 +501,7 @@ use frontend\models\NewsCategory;
                                     </a>
                                 </h3>
                             </div>
-                            <?php
-                            $banner = Banner::getDataByCustomSetting('one_banner_home_bottom');
-                            if (!empty($banner->images)) {
-                                ?>
-                                <div class="CauChuyenThuongHieu left">
-                                    <img src="<?php echo $banner->images->image ?>" class="w100">
-                                </div>
-                            <?php } ?>
+
                         
                     </div>
                 </div>

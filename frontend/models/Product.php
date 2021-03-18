@@ -33,6 +33,8 @@ use frontend\models\Base;
  */
 class Product extends Base
 {
+    const TYPE_ROUTER = Router::TYPE_PRODUCT; # lấy type router dùng seo_name
+
     public $images;
     public $category_ids;
     public $field_lang = [
