@@ -14,6 +14,8 @@ use frontend\models\NewsCategory;
 <?php echo $this->render("//element/home/hotline"); ?>
 <?php echo $this->render("//element/home/ceo"); ?>
 <?php echo $this->render("//element/home/member"); ?>
+<?php echo $this->render("//element/home/news"); ?>
+<?php echo $this->render("//element/home/contact"); ?>
 
 <div class="w1000">
     <div class="content page-home content-page" id="streamItem">

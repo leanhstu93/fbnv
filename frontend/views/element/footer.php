@@ -3,6 +3,7 @@
 use frontend\models\Banner;
 use frontend\models\SinglePage;
 ?>
+
 <div class="footer hide-loading" id="stop-sticky">
     <div class="menucategory clearfix menufooter w100">
         <div class="wp1040">
@@ -68,7 +69,67 @@ use frontend\models\SinglePage;
         <img src="/images/icons/scrollTotop.png" />
     </div>
 </div>
+<footer class="w100">
+    <div class="w1000">
+        <div class="wrapper-content w100">
+            <div class="col">
+                <div class="title">
+                    Liên hệ
+                </div>
+                <div class="item">
+                    <div class="title-sub">
+                        Hotline hỗ trợ:
+                    </div>
+                    <div class="text">
+                        <?= $this->params['company']->phone ?>, <?= $this->params['company']->tel ?>
+                    </div>
+                </div>
 
+                <div class="item">
+                    <div class="title-sub">
+                        Email:
+                    </div>
+                    <div class="text">
+                        <?= $this->params['company']->email ?>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="title-sub">
+                        Thời gian làm việc:
+
+                    </div>
+                    <div class="text">
+                        Thứ hai - thứ sáu: 8:00AM - 5:30PM
+                    </div>
+                </div>
+                <div class="item">
+                    <ul>
+                        <li>
+                            <a href="<?php echo $this->params['company']->facebook ?>" target="_blank">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $this->params['company']->facebook ?>" target="_blank">
+                                <i class="fal fa-envelope"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?php echo $this->params['company']->youtube ?>" target="_blank">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col">
+
+            </div>
+        </div>
+    </div>
+</footer>
 
 
 

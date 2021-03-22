@@ -22,7 +22,7 @@ use frontend\models\Template;
             foreach ($banners->images as $banner) { ?>
                 <div class="item">
                     <div class="avatar">
-                        <img src="<?php echo $banner->image ?>">
+                        <img src="<?php echo $banner->getImage() ?>" class="w100">
                     </div>
                     <div class="name">
                         <?php echo $banner->name ?>

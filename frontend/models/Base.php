@@ -8,10 +8,11 @@ class Base extends \yii\db\ActiveRecord
 {
 
     const ORDER_BY = ' id DESC';
+
     public function setTranslate()
     {
         $type = 0;
-        if(method_exists($this,'listMapLanguage')) {
+        if (method_exists($this, 'listMapLanguage')) {
             switch ($this->tableName()) {
                 case 'product_category':
                     $type = DataLang::TYPE_PRODUCT_CATEGORY;
@@ -31,9 +32,9 @@ class Base extends \yii\db\ActiveRecord
                 case 'config_page':
                     if ($this->type === ConfigPage::TYPE_PRODUCT) {
                         $type = DataLang::TYPE_PAGE_PRODUCT;
-                    } else if($this->type === ConfigPage::TYPE_NEWS) {
+                    } else if ($this->type === ConfigPage::TYPE_NEWS) {
                         $type = DataLang::TYPE_PAGE_NEWS;
-                    } else if($this->type === ConfigPage::TYPE_GALLERY_IMAGE) {
+                    } else if ($this->type === ConfigPage::TYPE_GALLERY_IMAGE) {
                         $type = DataLang::TYPE_PAGE_GALLERY_IMAGE;
                     }
                     break;
@@ -44,18 +45,18 @@ class Base extends \yii\db\ActiveRecord
             return $this;
         }
 
-            #xu ly ngon ngu
+        #xu ly ngon ngu
         $session = Yii::$app->session;
         $code_lang = $session->get('language');
 
         $listLanguage = Yii::$app->params['listLanguage'];
 
-        if($listLanguage[$code_lang]['default']) {
+        if ($listLanguage[$code_lang]['default']) {
             return $this;
         }
 
         if (!empty($this->id)) {
-            $dataLang = DataLang::find()->where(['id_object' => $this->id,'code_lang' => $code_lang,'type' => $type])->one();
+            $dataLang = DataLang::find()->where(['id_object' => $this->id, 'code_lang' => $code_lang, 'type' => $type])->one();
             if ($dataLang) {
                 foreach ($this->listMapLanguage() as $key => $value) {
                     $this->$key = $dataLang->$value;
@@ -65,20 +66,20 @@ class Base extends \yii\db\ActiveRecord
         return $this;
     }
 
-    public static function processSeoName($seo_name,$id = null)
+    public static function processSeoName($seo_name, $id = null)
     {
         if (empty($id)) {
             $model = Router::find()->where(['seo_name' => $seo_name])->one();
         } else {
-            $model = Router::find()->where(['seo_name' => $seo_name])->andWhere('id_object != :id_object',['id_object'=>$id])->one();
+            $model = Router::find()->where(['seo_name' => $seo_name])->andWhere('id_object != :id_object', ['id_object' => $id])->one();
         }
 
         while ($model != null) {
-            $seo_name = $seo_name.'-'.time().rand(10,99);
+            $seo_name = $seo_name . '-' . time() . rand(10, 99);
             if (empty($id)) {
                 $model = Router::find()->where(['seo_name' => $seo_name])->one();
             } else {
-                $model = Router::find()->where(['seo_name' => $seo_name])->andWhere('id_object != :id_object',['id_object'=>$id])->one();
+                $model = Router::find()->where(['seo_name' => $seo_name])->andWhere('id_object != :id_object', ['id_object' => $id])->one();
             }
         }
 
@@ -87,8 +88,13 @@ class Base extends \yii\db\ActiveRecord
 
     public function getSeoName()
     {
-        $model = Router::find()->where(['id_object' => $this->id,'type' => static::TYPE_ROUTER])->one();
+        $model = Router::find()->where(['id_object' => $this->id, 'type' => static::TYPE_ROUTER])->one();
         return $model ? $model->seo_name : '';
+    }
+
+    public function getImage()
+    {
+        return Yii::$app->homeUrl.$this->image;
     }
 
     public function getUrl()

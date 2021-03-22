@@ -14,7 +14,8 @@ Main.fn = Main.prototype = {
         selectorBannerHome: '.js__main-banner',
         selectorBannerMenuItem: '.js__menu-banner-item',
         selectorBannerContentItem: '.js__content-banner-item',
-        selectorBannerMember: '.js__slide-member'
+        selectorBannerMember: '.js__slide-member',
+        selectorSlideNewsHome: '.js__news-home'
     },
 
     init: function () {
@@ -76,12 +77,18 @@ Main.fn = Main.prototype = {
     //         });
     //     }
     // },
+
+
     initSlideMember: function() {
       $(this.config.selectorBannerMember).slick({
+          centerMode: true,
+          infinite: false,
           centerPadding: '20px',
+          margin:10,
           slidesToShow: 3,
           // slidesToScroll: 3,
-          // arrows: false,
+          loop:true,
+          arrows: true,
           autoplay:true,
           dots: true,
           speed: 500,
@@ -110,7 +117,7 @@ Main.fn = Main.prototype = {
     },
     initSlider :function() {
        $(this.config.selectorSliderReview).slick({
-           centerPadding: '20px',
+           centerPadding: '60px',
            slidesToShow: 1,
            // slidesToScroll: 3,
            // arrows: false,
