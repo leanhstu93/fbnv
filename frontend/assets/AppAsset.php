@@ -13,8 +13,7 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/menu/styles.css',
-        'libs/slick/slick.css',
-        'libs/slick/slick-theme.css',
+        'libs/swipper/swiper-bundle.min.css',
         'libs/fontawesome5/css/all.min.css',
         'https://fonts.googleapis.com/css?family=Montserrat%3A400%2C700%7CRoboto%3A100%2C300%2C400%2C700&#038;ver=5.6.2',
         'https://fonts.googleapis.com/css?family=Roboto:400,500,600,700',
@@ -26,7 +25,7 @@ class AppAsset extends AssetBundle
     public $js = [
 //        'js/jquery.js',
         'js/slimScroll/jquery.slimscroll.min.js',
-        'libs/slick/slick.js',
+        'libs/swipper/swiper-bundle.min.js',
         'js/menu/script.js',
         'libs/fancybox-master/jquery.fancybox.js',
         'js/main.js',

@@ -233,10 +233,9 @@ a{text-decoration:none;color:#000}
 	background: -webkit-linear-gradient(135deg, rgba(30,187,240,0.07) 30%, rgba(57,223,170,0.07) 100%);
 	background: linear-gradient(135deg, rgba(30,187,240,0.07) 30%, rgba(57,223,170,0.07) 100%);
 	color: #1ebbf0;
-	background: -webkit-linear-gradient(left, #1ebbf0 30%, #39dfaa 100%);
-	color: transparent;
-	-webkit-background-clip: text;
-	background-clip: text;
+}
+#cssmenu ul ul{
+	background: white;
 }
 #cssmenu > ul > li:hover > a{
 	color: #1ebbf0;
@@ -481,6 +480,9 @@ section.review-home .wrapper-content .wrapper-slider-review img{
 }
 section.review-home .wrapper-content .wrapper-slider-review{
 	text-align: center;
+	overflow: hidden;
+	position: relative;
+	padding-bottom: 30px;
 }
 section.review-home .wrapper-content .wrapper-slider-review .title{
 	font-size: 18px;
@@ -496,6 +498,12 @@ section.review-home .wrapper-content .wrapper-slider-review .fullname {
 	background-clip: text;
 	font-weight: bold;
 	margin-bottom: 20px;
+}
+.swiper-pagination-bullet-active{
+	background: var(--color-primary);
+}
+section.review-home .swiper-button-next, section.review-home .swiper-button-prev{
+color:rgba(51,51,51,0.35)
 }
 section.review-home .col-left{
 	background-image: url(../images/home/gioi-thieu-think-designer-4.jpg);
@@ -810,8 +818,10 @@ background: whitesmoke;
 	padding-top: 0px;
 }
 .js__slide-member .item{
-	padding: 0px 20px;
 	background: white;
+}
+.js__slide-member .item .wrapper-info{
+	padding: 20px;
 }
 .css__block-news .item .category-name{
 	padding: 2px 9px 1px;
@@ -885,6 +895,26 @@ background: whitesmoke;
 	background: -webkit-linear-gradient(135deg, #23aadd 30%, #37ce9d 100%);
 	background: linear-gradient(135deg, #23aadd 30%, #37ce9d 100%);
 	border-color: #1ebbf0;
+}
+.css__block-news{
+	overflow: hidden;
+	position: relative;
+}
+.news__home  .wrapper-content{
+	padding: 0px 60px;
+	position: relative;
+}
+.member__home .wrapper-slide-member{
+	overflow: hidden;
+	position: relative;
+}
+.wrapper-slider-review .swiper-pagination, .news__home .swiper-pagination{
+	bottom: 0px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+.wrapper-slider-review .swiper-pagination .swiper-pagination-bullet,.news__home .swiper-pagination .swiper-pagination-bullet{
+	margin-right: 10px;
 }
 .news__home .slick-dots li{
 	width:12px;
@@ -980,4 +1010,104 @@ footer .wrapper-content .item ul li i{
 	position: relative;
 	left: 50%;
 	transform: translateX(-50%);
+}
+footer .card{
+	background: transparent;
+	margin-bottom: 9px;
+}
+footer .card .card-header{
+	padding:0px
+}
+footer .card .card-header i {
+	color: rgb(139 141 148 / 37%);
+}
+footer .card .card-header .btn-link{
+	text-decoration: none;
+	color:#eeeeee;
+	cursor: pointer;
+}
+footer .list-news li {
+	list-style: none;
+	margin-bottom: 20px;
+}
+footer .list-news ul{
+	padding: 0px;
+	margin: 0px;
+}
+footer .list-news li a{
+	display: flex;
+}
+footer .list-news li .wrapper-image{
+	position: relative;
+	width: 100px;
+}
+footer .list-news li .wrapper-info{
+	color: white;
+	margin-left: 10px;
+}
+footer .list-news li .wrapper-info p{
+	color: rgba(139,141,148,0.5);
+}
+footer .list-news li label:hover{
+	background: -webkit-linear-gradient(left, #1ebbf0 30%, #39dfaa 100%);
+	color: transparent;
+	-webkit-background-clip: text;
+	background-clip: text;
+}
+footer .list-news li a{
+	color: white;
+}
+
+footer .wrapper-copy-right{
+	border-top: 1px solid rgba(255,255,255,0.12);
+	display: -ms-flexbox;
+	display: -ms-flex;
+	display: flex;
+	-ms-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-ms-flex-pack: space-between;
+	-ms-justify-content: space-between;
+	justify-content: space-between;
+	box-sizing: border-box;
+	padding: 10px 0 10px 0;
+	min-height: 60px;
+	font-size: 90%;
+}
+footer .wrapper-copy-right .col-right{
+	text-align: right;
+}
+.scroll-top {
+	position: fixed;
+	display: -ms-flexbox;
+	display: -ms-flex;
+	display: flex;
+	-ms-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-ms-flex-pack: center;
+	-ms-justify-content: center;
+	justify-content: center;
+	right: 10px;
+	bottom: 10px;
+	width: 40px;
+	height: 40px;
+	display: none;
+	filter: alpha(opacity=0);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	transition: opacity .4s ease;
+	text-decoration: none;
+	background-color: #000;
+	background-color: rgba(0,0,0,.2);
+	right: 10px;
+	z-index: 109;
+	color: white;
+	text-align: center;
+}
+.scroll-top i{
+	top:50%;
+	position: relative;
+	transform: translateY(-50) translateX(-50);
+	left: 50%;
+	font-size: 150%;
 }

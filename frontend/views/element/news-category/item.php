@@ -1,4 +1,4 @@
-<div class="item slick-slide">
+<div class="item swiper-slide">
     <a href="<?php echo $data->getUrl()?>">
         <div class="wrapper-image">
             <img src="<?= $data->image ?>"
@@ -13,13 +13,15 @@
             </ul>
         </div>
     </a>
-    <a href="<?php echo $data->getUrl()?>" class="title w100">
+    <div class="wrapper-info">
+        <a href="<?php echo $data->getUrl()?>" class="title w100">
             <?php echo $data->name ?>
-    </a>
+        </a>
         <div class="desc w100">
             <?php echo $data->getDescriptionCut(300) ?>
         </div>
         <a class="btn btn-view-more" href="<?php echo $data->getUrl()?>">
             Xem thêm <i class="fal fa-chevron-right"></i>
         </a>
+    </div>
 </div>

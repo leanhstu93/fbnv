@@ -7,7 +7,7 @@ Main.fn = Main.prototype = {
         selectorSliderReview : '.js__slider-review',
         // selectorMenu: '.wrapper-menu',
         // selectorScroll: '.js__scroll_read_multi',
-        // selectorBackToTop: '.js_scroll-top',
+        selectorBackToTop: '.js_scroll-top',
         // selectorStickyAnchor: '#rightsticky',
         // selectorSticky: '#rightsticky',
         // selectorStopSticky: '#stop-sticky'
@@ -15,15 +15,18 @@ Main.fn = Main.prototype = {
         selectorBannerMenuItem: '.js__menu-banner-item',
         selectorBannerContentItem: '.js__content-banner-item',
         selectorBannerMember: '.js__slide-member',
-        selectorSlideNewsHome: '.js__news-home'
+        selectorSlideNewsHome: '.js__slide-news',
+        selectorSlideReview: '.js__slider-review'
     },
 
     init: function () {
-         this.initSlider();
+         //this.initSlider();
          this.initSlideMember();
+        this.initSlideReview();
+        this.initSlideNews();
         // this.fixScrollMenu();
         // this.initScrollReadMulti();
-        // this.handleScrollToTop();
+        this.handleScrollToTop();
         // this.handleSticky();
         this.handleToggleTextBanner();
     },
@@ -41,6 +44,23 @@ Main.fn = Main.prototype = {
             $($ItemContent).addClass('active');
         });
         $(this.config.selectorBannerMenuItem+ ':first').trigger('click');
+    },
+
+    handleScrollToTop: function() {
+        var t = this;
+        $(this.config.selectorBackToTop).hide();
+        var o = $(window).scrollTop();
+        $(window).scroll(function() {
+            var e = $(window).scrollTop();
+            o < e || e < 150 ? $(t.config.selectorBackToTop).fadeOut() : $(t.config.selectorBackToTop).fadeIn(),
+                o = e
+        }),
+            $(this.config.selectorBackToTop).click(function() {
+                return $("html, body").animate({
+                    scrollTop: 0
+                }, 800),
+                    !1
+            })
     },
 
     // handleSticky: function(){
@@ -78,42 +98,52 @@ Main.fn = Main.prototype = {
     //     }
     // },
 
+    initSlideReview: function() {
+        new Swiper(this.config.selectorSliderReview, {
+            speed: 400,
+            slidesPerView: 1,
+            pagination: {
+                el: $(this.config.selectorSliderReview).parent().find('.swiper-pagination')[0]
+            },
+
+            navigation: {
+                nextEl: $(this.config.selectorSliderReview).parent().find('.swiper-button-next')[0],
+                prevEl:  $(this.config.selectorSliderReview).parent().find('.swiper-button-prev')[0],
+            },
+        });
+    },
 
     initSlideMember: function() {
-      $(this.config.selectorBannerMember).slick({
-          centerMode: true,
-          infinite: false,
-          centerPadding: '20px',
-          margin:10,
-          slidesToShow: 3,
-          // slidesToScroll: 3,
-          loop:true,
-          arrows: true,
-          autoplay:true,
-          dots: true,
-          speed: 500,
-          responsive: [
-              {
-                  breakpoint: 1024,
-                  settings: {
-                      slidesToShow: 3,
-                      slidesToScroll: 3,
-                      infinite: true,
-                      dots: true
-                  }
-              },
-              {
-                  breakpoint: 660,
-                  settings: {
-                      centerPadding: '10px',
-                      slidesToShow: 2,
-                      slidesToScroll: 3,
-                      infinite: true,
-                      dots: true
-                  }
-              },
-          ]
-      });
+        new Swiper(this.config.selectorBannerMember, {
+            speed: 400,
+            spaceBetween: 30,
+            slidesPerView: 3,
+            pagination: {
+                el: $(this.config.selectorBannerMember).parent().find('.swiper-pagination')[0]
+            },
+
+            // Navigation arrows
+            navigation: {
+                nextEl: $(this.config.selectorBannerMember).parent().find('.swiper-button-next')[0],
+                prevEl:  $(this.config.selectorBannerMember).parent().find('.swiper-button-prev')[0],
+            },
+        });
+    },
+    initSlideNews: function() {
+        new Swiper(this.config.selectorSlideNewsHome, {
+            speed: 400,
+            spaceBetween: 30,
+            slidesPerView: 3,
+            pagination: {
+                el: $(this.config.selectorSlideNewsHome).parent().find('.swiper-pagination')[0]
+            },
+
+            // Navigation arrows
+            navigation: {
+                nextEl: $(this.config.selectorSlideNewsHome).parent().find('.swiper-button-next')[0],
+                prevEl:  $(this.config.selectorSlideNewsHome).parent().find('.swiper-button-prev')[0],
+            },
+        });
     },
     initSlider :function() {
        $(this.config.selectorSliderReview).slick({

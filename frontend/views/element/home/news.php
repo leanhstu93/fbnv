@@ -26,13 +26,22 @@ use frontend\models\Template;
                 ->limit(5)
                 ->orderBy(News::ORDER_BY)->all();
             ?>
-            <div class="js__slide-member css__block-news">
+            <div class="js__slide-news css__block-news">
+                <div class="swiper-wrapper">
                 <?php
                 foreach ($data as $item) {
                     echo $this->render("//element/news-category/item", ['data' => $item]);
                 }
                 ?>
+                </div>
             </div>
+
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
         </div>
     </div>
 </section>

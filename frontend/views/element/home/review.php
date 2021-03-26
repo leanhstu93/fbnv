@@ -10,10 +10,11 @@
                     KHÁCH HÀNG THINK DESIGNER
                 </div>
                 <div class="wrapper-slider-review js__slider-review w100">
+                    <div class="swiper-wrapper">
                     <?php
                     $banners = Banner::getDataByCustomSetting('banner_review');
                     foreach ($banners->images as $banner) { ?>
-                        <div class="item">
+                        <div class="item swiper-slide">
                             <div class="wrapper-image center">
                                 <img src="<?php echo $banner->image ?>">
                             </div>
@@ -29,13 +30,22 @@
                         </div>
                     <?php }
                     ?>
+                    </div>
+
+                    <!-- If we need pagination -->
+                    <div class="swiper-pagination"></div>
+
+                    <!-- If we need navigation buttons -->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+
                 </div>
                 <!-- start brand -->
                 <div class="wrapper-brand">
                     <?php
                     $banners = Banner::getDataByCustomSetting('banner_brand');
                     foreach ($banners->images as $banner) { ?>
-                    <div class="item">
+                    <div class="item ">
                         <a href="<?php echo $banner->link ?>">
                             <img src="<?php echo $banner->image ?>">
                         </a>
