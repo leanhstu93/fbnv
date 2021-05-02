@@ -1028,7 +1028,7 @@ footer .card .card-header .btn-link{
 }
 footer .list-news li {
 	list-style: none;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 }
 footer .list-news ul{
 	padding: 0px;
@@ -1044,6 +1044,7 @@ footer .list-news li .wrapper-image{
 footer .list-news li .wrapper-info{
 	color: white;
 	margin-left: 10px;
+	width: 100%;
 }
 footer .list-news li .wrapper-info p{
 	color: rgba(139,141,148,0.5);

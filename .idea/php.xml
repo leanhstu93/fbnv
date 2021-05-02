@@ -91,6 +91,7 @@
       <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-colorinput" />
       <path value="$PROJECT_DIR$/vendor/kartik-v/bootstrap-popover-x" />
       <path value="$PROJECT_DIR$/vendor/keygenqt/yii2-autocomplete-ajax" />
+      <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="5.4.0" />

@@ -15,7 +15,7 @@ return array(
     'yii\\bootstrap\\' => array($vendorDir . '/yiisoft/yii2-bootstrap/src'),
     'yii\\bootstrap4\\' => array($vendorDir . '/yiisoft/yii2-bootstrap4/src'),
     'yii\\' => array($vendorDir . '/yiisoft/yii2'),
-    'phpDocumentor\\Reflection\\' => array($vendorDir . '/phpdocumentor/reflection-common/src', $vendorDir . '/phpdocumentor/reflection-docblock/src', $vendorDir . '/phpdocumentor/type-resolver/src'),
+    'phpDocumentor\\Reflection\\' => array($vendorDir . '/phpdocumentor/reflection-common/src', $vendorDir . '/phpdocumentor/type-resolver/src', $vendorDir . '/phpdocumentor/reflection-docblock/src'),
     'keygenqt\\autocompleteAjax\\' => array($vendorDir . '/keygenqt/yii2-autocomplete-ajax'),
     'kartik\\popover\\' => array($vendorDir . '/kartik-v/yii2-popover-x/src'),
     'kartik\\plugins\\popover\\' => array($vendorDir . '/kartik-v/bootstrap-popover-x'),
@@ -59,5 +59,5 @@ return array(
     'DeepCopy\\' => array($vendorDir . '/myclabs/deep-copy/src/DeepCopy'),
     'Codeception\\PHPUnit\\' => array($vendorDir . '/codeception/phpunit-wrapper/src'),
     'Codeception\\Extension\\' => array($vendorDir . '/codeception/base/ext'),
-    'Codeception\\' => array($vendorDir . '/codeception/base/src/Codeception', $vendorDir . '/codeception/stub/src'),
+    'Codeception\\' => array($vendorDir . '/codeception/stub/src', $vendorDir . '/codeception/base/src/Codeception'),
 );
