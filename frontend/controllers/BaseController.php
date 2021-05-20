@@ -278,4 +278,17 @@ class BaseController extends Controller
         ]);
     }
 
+    public function setTagMeta($data)
+    {
+        $this->view->registerMetaTag([
+            'name' => 'keywords',
+            'content' => $data->meta_keyword
+        ]);
+        $this->view->registerMetaTag([
+            'name' => 'description',
+            'content' => $data->meta_desc
+        ]);
+        $this->view->title = $data->name;
+    }
+
 }

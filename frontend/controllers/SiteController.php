@@ -11,6 +11,7 @@ use frontend\models\ProductCategory;
 use frontend\models\ProductImage;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\SinglePage;
+use frontend\models\Template;
 use frontend\models\Video;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -92,6 +93,12 @@ class SiteController extends BaseController
                 case Router::TYPE_VIDEO:
                     $res = $this->actionVideoDetail($model->id_object);
                     break;
+                case Router::TYPE_TEMPLATE_PAGE:
+                    $res = $this->actionTemplate(0);
+                    break;
+                case Router::TYPE_TEMPLATE_CATEGORY:
+                    $res = $this->actionTemplate($model->id_object);
+                    break;
                 case 'video' :
                     $this->actionVideo();
                     break;
@@ -167,6 +174,63 @@ class SiteController extends BaseController
             $session->set('language', $param);
         }
         $this->redirect(Yii::$app->request->referrer ?: Yii::$app->homeUrl);
+    }
+
+    public function actionTemplate($id_object)
+    {
+        if ($id_object > 0) {
+
+
+        } else {
+            # get all
+            $configPage =  ConfigPage::find()->where(['type' => ConfigPage::TYPE_TEMPLATE])->one()->setTranslate();
+            $this->setTagMeta($configPage);
+            #query
+            $dataQuery = [];
+            $dataGet = Yii::$app->request->get();
+            if (!empty($dataGet['keyword'])) {
+                $dataQuery = [
+                    'like', 'name', $dataGet['keyword']
+                ];
+            }
+            $data = Template::find()->where($dataQuery)->andWhere(['active' => 1]);
+
+            $countQuery = clone $data;
+            $categories = [];
+            // set breadcrumb
+            $bread[] = [
+                'name' => 'Trang chủ',
+                'link' => Yii::$app->homeUrl
+            ];
+            $bread[] = [
+                'name' => $configPage->name,
+                'link' =>$configPage->getUrl()
+            ];
+            //end set breadcrumb
+            # lấy danh mục con
+            $categoryChild = ProductCategory::find()->where(['active'=>1])->all();
+        }
+
+
+        # phan trang
+        $pages = new Pagination(['totalCount' => $countQuery->count()]);
+        $pages->defaultPageSize = 15;
+        $models = $data->offset($pages->offset)
+            ->limit($pages->limit)
+            ->orderBy('id DESC')
+            ->all();
+        # end phan trang
+
+
+
+        return [
+            'file' => 'template',
+            'data' => [
+                'data' => $models,
+                'bread' => $bread,
+                'pages' =>$pages
+            ]
+        ];
     }
 
     /**

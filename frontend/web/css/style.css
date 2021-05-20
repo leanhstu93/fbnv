@@ -1112,3 +1112,23 @@ footer .wrapper-copy-right .col-right{
 	left: 50%;
 	font-size: 150%;
 }
+.wrapper-breadcrumb{
+	padding: 30px 0;
+}
+.wrapper-breadcrumb li {
+	list-style: none;
+}
+.wrapper-breadcrumb .title-breadcrumb{
+	font-size: 150%;
+	width: 100%;
+	text-align: center;
+	margin-bottom: 20px;
+
+}
+.wrapper-breadcrumb ul{
+	padding-left: 0;
+	margin-left: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
