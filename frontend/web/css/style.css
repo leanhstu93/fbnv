@@ -1132,3 +1132,109 @@ footer .wrapper-copy-right .col-right{
 	align-items: center;
 	justify-content: center;
 }
+.page-template .list-template{
+	width: 100%;
+	padding: 20px 0;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-auto-rows: auto;
+	grid-gap: 20px;
+}
+.wrapper-breadcrumb{
+	background: gainsboro;
+}
+.wrapper-breadcrumb .title-breadcrumb{
+	font: normal 700 24px / 34px "Roboto", Helvetica, Arial, Verdana, sans-serif;
+	color:#333333
+}
+.wrapper-breadcrumb li a,.wrapper-breadcrumb li{
+	color:#adafb3;
+	font-weight:bold;
+	font-size: 14px;
+}
+.page-template{
+	padding: 30px 0;
+	background: #e5e5e5;
+}
+.page-template .nav-tabs .nav-link.active,.page-template .nav-tabs .nav-link:hover,.page-template .nav-tabs .nav-link:focus{
+
+	background: var(--color-primary);
+	color: white;
+	font-weight: bold;
+	border-radius: 16px;
+	padding: 6px 31px;
+}
+.page-template .list-template .item .title{
+	width: 100%;
+	float: left;
+	background: white;
+	padding: 20px;
+	font-weight: bold;
+}
+.wrapper-pagination,.page-template .nav-tabs{
+	display: flex;
+	justify-content: center;
+}
+.page-template .wrapper-rel{
+	position: relative;
+}
+.page-template .item:hover .wrapper-rel:after{
+	display: block;
+}
+.page-template .wrapper-rel:after{
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.5);
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	background: -webkit-linear-gradient();
+	background: linear-gradient();
+	left: 0;
+	display: none;
+}
+.page-template .wrapper-button{
+	display: none;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: auto;
+	transform: translateY(-50%);
+	transform: translateX(-50%);
+}
+.page-template .list-template .item:hover .wrapper-button{
+	display: block;
+	z-index: 1;
+}
+.page-template .list-template .item .wrapper-button .btn-reg{
+	background: var(--color-primary);
+	padding: 6px 14px;
+	border-radius: 10px;
+	color: white;
+	border: 1px solid var(--color-primary);
+}
+.page__news-category .list-news{
+	grid-template-columns: repeat(2, 1fr);
+	grid-auto-rows: auto;
+	grid-gap: 60px;
+	display: grid;
+}
+.page__news-category .list-news .wrapper-info{
+	padding: 30px 0px;
+}
+.page__news-category .list-news .wrapper-info h3{
+	font-size: 150%;
+	font-weight: normal;
+	color: #333;
+}
+.page__news-category .list-news .wrapper-info .date{
+	color: #bdbbbb;
+	font-size: 90%;
+}
+.page__news-category .list-news .wrapper-info .btn-read{
+	background: #02010100;
+	fill: var( --color-primary );
+	color: var( --color-primary );
+	padding: 0px 0px 5px 0px;
+}

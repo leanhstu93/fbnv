@@ -24,6 +24,17 @@ return [
                 ],
             ]
         ],
+        'mn_manager_register_template_form' => [
+            'name' => 'Quản lý đăng ký template',
+            'link' => 'javascript:void(0)',
+            'icon' => '<i class="site-menu-icon wb-layout" aria-hidden="true"></i>',
+            'submenu' => [
+                'submenu_2' => [
+                    'name' => 'Danh sách đăng ký',
+                    'link' => 'register-template-form/index'
+                ],
+            ]
+        ],
         'mn_manager_news' => [
             'name' => 'Quản lý tin tức',
             'link' => 'javascript:void(0)',

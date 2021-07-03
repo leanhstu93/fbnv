@@ -16,7 +16,10 @@ Main.fn = Main.prototype = {
         selectorBannerContentItem: '.js__content-banner-item',
         selectorBannerMember: '.js__slide-member',
         selectorSlideNewsHome: '.js__slide-news',
-        selectorSlideReview: '.js__slider-review'
+        selectorSlideReview: '.js__slider-review',
+        selectorModalRegisterTemplate: '#js__form-register-template',
+        selectorButtonRegisterTemplate: '.js__btn-register-template',
+        selectorButtonSubmitRegisterTemplate: '.js__submit-register-template'
     },
 
     init: function () {
@@ -29,6 +32,32 @@ Main.fn = Main.prototype = {
         this.handleScrollToTop();
         // this.handleSticky();
         this.handleToggleTextBanner();
+        this.handleRegisterTemplate();
+        this.handleSaveFormRegisterTemplate();
+    },
+
+    handleSaveFormRegisterTemplate()
+    {
+        let self = this;
+
+        $(this.config.selectorButtonSubmitRegisterTemplate).click(function () {
+            console.log('a');
+        });
+    },
+
+    /**
+     * Đăng ky template
+     */
+    handleRegisterTemplate()
+    {
+        let self = this;
+        $(this.config.selectorButtonRegisterTemplate).click(function(){
+            let id = parseInt($(this).data('id'));
+            if (id > 0) {
+                $(self.config.selectorModalRegisterTemplate).modal('show');
+            }
+            return false;
+        });
     },
 
     handleToggleTextBanner()

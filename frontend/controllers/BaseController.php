@@ -164,6 +164,14 @@ class BaseController extends Controller
                         'module' => $module,
                     ];
                     break;
+                case 'template':
+                    $config =  ConfigPage::find()->where(['type' => ConfigPage::TYPE_TEMPLATE])->one()->setTranslate();
+                    $res[] = [
+                        'name' => $config->name,
+                        'link' =>  $config->getUrl(),
+                        'module' => $module,
+                    ];
+                    break;
             }
 
             if (!empty($value['children'])) {

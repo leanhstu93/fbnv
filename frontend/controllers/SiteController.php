@@ -61,6 +61,7 @@ class SiteController extends BaseController
             $model = Router::find()->where(['seo_name' => $alias])->one();
             $type = $model->type;
         }
+
         if (!empty($type)) {
             switch ($type){
                 case Router::TYPE_PRODUCT:
@@ -214,7 +215,7 @@ class SiteController extends BaseController
 
         # phan trang
         $pages = new Pagination(['totalCount' => $countQuery->count()]);
-        $pages->defaultPageSize = 15;
+        $pages->defaultPageSize = 20;
         $models = $data->offset($pages->offset)
             ->limit($pages->limit)
             ->orderBy('id DESC')

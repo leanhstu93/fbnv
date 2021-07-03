@@ -33,7 +33,6 @@ use frontend\models\Template;
                             <?php echo $item->name ?>
                         </a>
                     </li>
-                    </li>
                 <?php } ?>
 
             </ul>
